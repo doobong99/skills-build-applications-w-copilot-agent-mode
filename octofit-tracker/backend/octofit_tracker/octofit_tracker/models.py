@@ -11,6 +11,9 @@ class Team(models.Model):
     class Meta:
         db_table = 'teams'
 
+    def __str__(self):
+        return self.name
+
 
 class UserProfile(models.Model):
     id = models.ObjectIdField(primary_key=True, editable=False, default=ObjectId)
@@ -21,6 +24,9 @@ class UserProfile(models.Model):
 
     class Meta:
         db_table = 'users'
+
+    def __str__(self):
+        return self.username
 
 
 class Activity(models.Model):
@@ -34,6 +40,9 @@ class Activity(models.Model):
     class Meta:
         db_table = 'activities'
 
+    def __str__(self):
+        return f"{self.user_email} - {self.activity_type}"
+
 
 class LeaderboardEntry(models.Model):
     id = models.ObjectIdField(primary_key=True, editable=False, default=ObjectId)
@@ -45,6 +54,9 @@ class LeaderboardEntry(models.Model):
     class Meta:
         db_table = 'leaderboard'
 
+    def __str__(self):
+        return f"{self.rank} - {self.user_email}"
+
 
 class Workout(models.Model):
     id = models.ObjectIdField(primary_key=True, editable=False, default=ObjectId)
@@ -55,3 +67,6 @@ class Workout(models.Model):
 
     class Meta:
         db_table = 'workouts'
+
+    def __str__(self):
+        return f"{self.user_email} - {self.workout_name}"

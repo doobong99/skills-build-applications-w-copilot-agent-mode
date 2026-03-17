@@ -26,6 +26,7 @@ from .views import (
     TeamViewSet,
     UserProfileViewSet,
     WorkoutViewSet,
+    api_summary,
 )
 
 codespace_name = os.environ.get('CODESPACE_NAME')
@@ -46,10 +47,20 @@ def api_root(request):
     return JsonResponse({
         'message': 'OctoFit Tracker API',
         'base_url': base_url,
+        'endpoints': {
+            'users': f'{base_url}/api/users/',
+            'teams': f'{base_url}/api/teams/',
+            'activities': f'{base_url}/api/activities/',
+            'leaderboard': f'{base_url}/api/leaderboard/',
+            'workouts': f'{base_url}/api/workouts/',
+            'summary': f'{base_url}/api/summary/',
+        },
     })
 
 urlpatterns = [
+    path('', api_root, name='root-api'),
     path('admin/', admin.site.urls),
     path('api/', api_root, name='api-root'),
+    path('api/summary/', api_summary, name='api-summary'),
     path('api/', include(router.urls)),
 ]

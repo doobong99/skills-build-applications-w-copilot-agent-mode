@@ -14,27 +14,32 @@ class TeamSerializer(ObjectIdStringModelSerializer):
     class Meta:
         model = Team
         fields = '__all__'
+        read_only_fields = ('id',)
 
 
 class UserProfileSerializer(ObjectIdStringModelSerializer):
     class Meta:
         model = UserProfile
         fields = '__all__'
+        read_only_fields = ('id',)
 
 
 class ActivitySerializer(ObjectIdStringModelSerializer):
     class Meta:
         model = Activity
         fields = '__all__'
+        read_only_fields = ('id',)
 
 
 class LeaderboardEntrySerializer(ObjectIdStringModelSerializer):
     class Meta:
         model = LeaderboardEntry
         fields = '__all__'
+        read_only_fields = ('id',)
 
 
 class WorkoutSerializer(ObjectIdStringModelSerializer):
     class Meta:
         model = Workout
         fields = '__all__'
+        read_only_fields = ('id',)
